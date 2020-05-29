@@ -40,8 +40,8 @@ public class HadoopParquet {
     private static final String INPUT_BUCKET_NAME = "jet-hdfs-parquet-input";
     private static final String OUTPUT_BUCKET_NAME = "jet-hdfs-parquet-output";
 
-    private static final String ACCESS_KEY = "AKIAZV4HIPQ4UUEICC6W";
-    private static final String SECRET_KEY = "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";
+    private static final String ACCESS_KEY = "";
+    private static final String SECRET_KEY = "";
 
     /**
      * To run the example on Amazon S3 upload the created file `file.parquet`
