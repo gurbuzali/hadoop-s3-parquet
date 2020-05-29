@@ -1,4 +1,4 @@
-package com.hazelcast.jet.examples.hadoop.parquet;/*
+/*
  * Copyright (c) 2008-2020, Hazelcast, Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,8 @@ package com.hazelcast.jet.examples.hadoop.parquet;/*
  * limitations under the License.
  */
 
+package com.hazelcast.jet.examples.hadoop.parquet;
+
 import com.hazelcast.jet.Jet;
 import com.hazelcast.jet.JetInstance;
 import com.hazelcast.jet.examples.hadoop.generated.User;
@@ -27,7 +29,6 @@ import org.apache.parquet.avro.AvroParquetInputFormat;
 import org.apache.parquet.avro.AvroParquetOutputFormat;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 
 /**
  * A sample which reads records from Apache Parquet file from Hadoop
@@ -39,8 +40,8 @@ public class HadoopParquet {
     private static final String INPUT_BUCKET_NAME = "jet-hdfs-parquet-input";
     private static final String OUTPUT_BUCKET_NAME = "jet-hdfs-parquet-output";
 
-    private static final String ACCESS_KEY = "";
-    private static final String SECRET_KEY = "";
+    private static final String ACCESS_KEY = "AKIAZV4HIPQ4UUEICC6W";
+    private static final String SECRET_KEY = "uVTar51hL7QTEPPzB8XhlXa68IHGHf4eaUNggaAN";
 
     /**
      * To run the example on Amazon S3 upload the created file `file.parquet`
@@ -49,7 +50,7 @@ public class HadoopParquet {
     public static void main(String[] args) throws Exception {
 //        new com.hazelcast.jet.examples.hadoop.parquet.HadoopParquet().go();
 
-        new com.hazelcast.jet.examples.hadoop.parquet.HadoopParquet().s3();
+        new HadoopParquet().s3();
     }
 
     private void s3() throws Exception {
@@ -92,11 +93,6 @@ public class HadoopParquet {
          .peek()
          .writeTo(HadoopSinks.outputFormat(configuration, o -> null, o -> o));
         return p;
-    }
-
-    private static String moduleDirectory() {
-        String resourcePath = com.hazelcast.jet.examples.hadoop.parquet.HadoopParquet.class.getClassLoader().getResource("").getPath();
-        return Paths.get(resourcePath).getParent().getParent().toString();
     }
 
 }
